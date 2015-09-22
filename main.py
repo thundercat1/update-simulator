@@ -53,8 +53,9 @@ class Simulation:
 	def run(self):
 		#run for n seconds
 		t = 0
+		sku_count = self.starting_storage.stored
 
-		while self.ending_storage.stored < 1000:
+		while self.ending_storage.stored < sku_count:
 			for processor in processors:
 				processor.run(t)
 
@@ -64,6 +65,8 @@ class Simulation:
 			t += 1
 
 			print('\r')
+
+		print('Processed', sku_count, 'in', t, 'seconds', 'or', t/60, 'minutes')
 
 
 if __name__ == '__main__':
